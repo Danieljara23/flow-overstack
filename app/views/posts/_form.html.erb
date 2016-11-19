@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2><%= action %> Post</h2>
+          </div>
+          <div class="panel-body">
+            <%= form_for(@post) do |post| %>
+            
+              <% if @post.errors.any? %>
+                <div class="error_explanation">
+                  <h2><%= pluralize(@post.errors.count, "error")%> won´t let this post to being saved:</h2>
+                  
+                  <ul>
+                    <% @post.errors.full_messages.each do |message| %>
+                      <li class="danger"><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              
+              <div class="row">
+                <div class="col-md-12">
+                  <div class= "form-group">
+                    <%= post.label :title %>
+                    <%= post.text_field :title, class: 'form-control' %>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <%= post.label :content %>
+                    <%= post.text_area :content,size: "30x10", class: 'form-control markdown-editable' %>
+                  </div>
+                </div>
+              </div>
+              <div class="actions">
+                <%= link_to raw('<span class="glyphicon glyphicon-remove"></span> Cancel'), posts_path, class: 'btn btn-primary btn-large' %>
+                <%= button_tag(type: "submit", class: "btn btn-success btn-large", name: "Save post", value: "Save product") do %>
+                  <span class="glyphicon glyphicon-ok"></span> Save post
+                <% end %> 
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

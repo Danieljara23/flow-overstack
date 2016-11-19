@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FlowOverstack</title>
+    <title>Super Blog</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,13 @@
   </head>
 
   <body>
+    <%= render 'layouts/navbar' %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
+    <script>
+      $('.alert').fadeIn(500).css("opacity","0.85").delay(2500).slideUp(900);
+      $('.alerts').on('click','.alert',function(){$(this).remove()});
+    </script>
   </body>
 </html>
